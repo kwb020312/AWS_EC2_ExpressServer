@@ -2,7 +2,7 @@
 
 ## EC2 로 ubuntu 서버 만들기
 
-<a href="ec2-13-125-245-120.ap-northeast-2.compute.amazonaws.com:3000">오늘의 삼일상업고 급식</a>
+<a href="http://ec2-13-125-245-120.ap-northeast-2.compute.amazonaws.com:3000">오늘의 삼일상업고 급식</a>
 
 # PUTTY
 
