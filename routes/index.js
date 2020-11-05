@@ -19,7 +19,6 @@ const saveToken = async(token) => {
     savedPushTokens.push(token);
   }
   await redis.set('savedPushTokens',JSON.stringify(savedPushTokens))
-  // console.log()
 };
 
 const handlePushTokens = async(message) => {
