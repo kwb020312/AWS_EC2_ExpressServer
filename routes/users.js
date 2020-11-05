@@ -1,5 +1,5 @@
 const { default: Axios } = require('axios');
-var express = require('express');
+const express = require('express');
 const router = express.Router();
 const {Expo} = require('expo-server-sdk')
 const Redis = require('ioredis')
