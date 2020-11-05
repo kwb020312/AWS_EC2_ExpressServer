@@ -19,12 +19,13 @@ const saveToken = async(token) => {
     savedPushTokens.push(token);
   }
   await redis.set('savedPushTokens',JSON.stringify(savedPushTokens))
-  console.log(JSON.parse(await redis.get('savedPushTokens')))
+  // console.log()
 };
 
-const handlePushTokens = (message) => {
+const handlePushTokens = async(message) => {
   let notifications = [];
-  for (let pushToken of savedPushTokens) {
+  let getTokens = JSON.parse(await redis.get('savedPushTokens'))
+  for (let pushToken of getTokens) {
     if (!Expo.isExpoPushToken(pushToken)) {
       console.error(`Push token ${pushToken} is not a valid Expo push token`);
       continue;
