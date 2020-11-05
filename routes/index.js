@@ -2,15 +2,24 @@ const { default: Axios } = require('axios');
 var express = require('express');
 const router = express.Router();
 const {Expo} = require('expo-server-sdk')
+const Redis = require('ioredis')
+const redis = new Redis({
+  host: 'redis-10902.c244.us-east-1-2.ec2.cloud.redislabs.com',
+  port: '10902',
+  password:'woPKGAehd3lCNuHs9tTVKl5sJYoxGbI0',
+  db:0
+})
 
 const expo = new Expo();
 
 let savedPushTokens = [];
 
-const saveToken = (token) => {
+const saveToken = async(token) => {
   if (savedPushTokens.indexOf(token === -1)) {
     savedPushTokens.push(token);
   }
+  await redis.set('savedPushTokens',JSON.stringify(savedPushTokens))
+  console.log(await JSON.parse(redis.get('savedPushTokens')))
 };
 
 const handlePushTokens = (message) => {
